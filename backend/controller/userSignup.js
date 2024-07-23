@@ -11,51 +11,41 @@ const bcrypt = require("bcrypt");
 async function userSignUpController(req, res) {
   try {
     const { email, password, name } = req.body;
+    console.log("Request body:", req.body);
 
-    const user = userModel.findOne({ email });
+    if (!email || !password || !name) {
+      throw new Error("Please provide email, password, and name.");
+    }
+
+    const user = await userModel.findOne({ email });
+    console.log("Existing user:", user);
 
     if (user) {
-      throw new Error("User already exits.");
-    }
-    if (!email) {
-      throw new Error("Please provide email");
-    }
-    if (!password) {
-      throw new Error("Please provide password");
-    }
-    if (!name) {
-      throw new Error("Please provide name");
+      throw new Error("User already exists.");
     }
 
+    // Proceed with user creation
     const saltRounds = 10;
+    const hashPassword = await bcrypt.hash(password, saltRounds);
 
-    const myPlaintextPassword = password;
-
-    const salt = bcrypt.genSaltSync(saltRounds);
-    const hashPassword = await bcrypt.hashSync(myPlaintextPassword, salt);
-
-    if (!hashPassword) {
-      throw new Error("something is wrong");
-    }
     const payload = {
       ...req.body,
+      role: "GENERAL",
       password: hashPassword,
     };
 
-    // Creating a new user data object using userModel
     const userData = new userModel(payload);
-
-    const saveUser = userData.save();
+    const saveUser = await userData.save();
 
     res.status(201).json({
       data: saveUser,
       success: true,
       error: false,
-      message: "user created successfully!",
+      message: "User created successfully!",
     });
   } catch (err) {
-    // Sending error response if any error occurs
-    res.json({
+    console.error("Error:", err.message);
+    res.status(400).json({
       message: err.message || err,
       error: true,
       success: false,

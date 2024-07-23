@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import loginIcons from "../assest/signin.gif";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ImageTobase64 from "../helpers/imageTobase64";
-import apiSummary from "../common";
+import apiSummary from "../common/index";
+import { toast } from "react-toastify";
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassowrd, setShowConfirmPassword] = useState(false);
@@ -15,6 +16,8 @@ const SignUp = () => {
     confirmPassword: "",
     profilePic: "",
   });
+
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -43,8 +46,9 @@ const SignUp = () => {
     e.preventDefault();
 
     if (data.password === data.confirmPassword) {
+      console.log("apiSummary.signUp.url", apiSummary.signUp.url);
       const dataResponse = await fetch(apiSummary.signUp.url, {
-        method: apiSummary.signUp.method,
+        method: "post",
         headers: {
           "content-type": "application/json",
         },
@@ -53,13 +57,19 @@ const SignUp = () => {
 
       const dataApi = await dataResponse.json();
 
-      console.log("data -login", dataApi);
+      if (dataApi.success) {
+        toast.success(dataApi.message);
+        navigate("/login");
+      }
+
+      if (dataApi.error) {
+        toast.error(dataApi.message);
+      }
     } else {
       console.log("Please check your password and confirm passsword");
     }
   };
 
-  
   return (
     <section id="signup">
       <div className="mx-auto container p-4">
