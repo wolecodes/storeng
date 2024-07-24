@@ -167,7 +167,7 @@ const SignUp = () => {
               </div>
             </div>
 
-            <button className="bg-red-600 hover:bg-red-700 text-white w-full px-6 py-2  max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6">
+            <button className="btn-color hover:opacity-70 w-full px-6 py-2  max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6">
               Sign up
             </button>
           </form>
@@ -175,7 +175,7 @@ const SignUp = () => {
             Already have an account ?{" "}
             <Link
               to={"/login"}
-              className=" text-red-600 hover:text-red-700 hover:underline"
+              className=" text-[#f8991e] hover:text-yellow-600 hover:underline"
             >
               Login
             </Link>

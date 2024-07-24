@@ -8,7 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import apiSummary from "./common/index";
 import Context from "./context";
+import { useDispatch } from "react-redux";
+import { setUserDetails } from "./store/userSlice";
 function App() {
+  const disPatch = useDispatch();
   const fetchUserDetails = async () => {
     const dataResponse = await fetch(apiSummary.current_user.url, {
       method: apiSummary.current_user.method,
@@ -17,12 +20,16 @@ function App() {
 
     const dataApi = await dataResponse.json();
 
+    if (dataApi.success) {
+      disPatch(setUserDetails(dataApi.data));
+    }
+
     console.log("data-user", dataResponse);
   };
   useEffect(() => {
     /** user details */
     fetchUserDetails();
-  }, []);
+  },[]);
   return (
     <>
       <Context.Provider
