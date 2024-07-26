@@ -3,10 +3,12 @@
 }
 .btn-color {
   background: #f8991e;
-  color: whitesmoke
+  color: whitesmoke;
 }
 
-
+.color {
+  color: #f8991e;
+}
 
 /*user table***/
 .userTable {

@@ -6,7 +6,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import SignUp from "../pages/SignUp";
 import AdminPanel from "../pages/AdminPanel";
 import AllUsers from "../pages/AllUsers";
-import AllProducts from "../pages/AlllProducts";
+import AllProducts from "../pages/AllProducts";
 const router = createBrowserRouter([
   {
     path: "/",
