@@ -15,6 +15,7 @@ const AllProducts = () => {
    */
   const fetchAllProduct = async () => {
     //! method isn't included here because "fetch" is get by default
+
     const fetchData = await fetch(apiSummary.allProduct.url);
 
     const response = await fetchData.json();
@@ -39,21 +40,26 @@ const AllProducts = () => {
       </div>
 
       {/* all product */}
-      <div>
-        {
-        allProduct.map((product, index) =>{
-          return (
-            <AdminProductCard data={product} key={index+"allProduct"} fetchdata={fetchAllProduct}/>)
-        })
-        
-        }
 
-        </div>
+      <div className="flex items-center flex-wrap h-[calc(100vh-190px)] overflow-y-scroll gap-5 py-4">
+        {allProduct.map((product, index) => {
+          return (
+            <AdminProductCard
+              data={product}
+              key={index + "allProduct"}
+              fetchdata={fetchAllProduct}
+            />
+          );
+        })}
+      </div>
 
       {/* upload product component */}
 
       {openUploadProduct && (
-        <UploadProduct onClose={() => setOpenUploadProduct(false)} />
+        <UploadProduct
+          onClose={() => setOpenUploadProduct(false)}
+          fetchData={fetchAllProduct}
+        />
       )}
     </div>
   );
