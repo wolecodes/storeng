@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import fetchCategoryWiseProduct from "../helpers/fetchCategoryWise";
 import displayCurrency from "../helpers/displayCurrency";
 
 import { Link } from "react-router-dom";
-// import addToCart from "../helpers/addToCart";
-// import Context from "../context";
+import addToCart from "../helpers/addToCart";
+import Context from "../context";
 import scrollTop from "../helpers/scrollTop";
 
 const CategroyWiseProductDisplay = ({ category, heading }) => {
@@ -12,12 +12,12 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
   const [loading, setLoading] = useState(true);
   const loadingList = new Array(13).fill(null);
 
-  // const { fetchUserAddToCart } = useContext(Context);
+  const { fetchUserAddToCart } = useContext(Context);
 
-  // const handleAddToCart = async (e, id) => {
-  //   await addToCart(e, id);
-  //   fetchUserAddToCart();
-  // };
+  const handleAddToCart = async (e, id) => {
+    await addToCart(e, id);
+    fetchUserAddToCart();
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -85,7 +85,7 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
                     </div>
                     <button
                       className="text-sm btn-color hover:opacity-70 px-3 py-1 rounded"
-                      // onClick={(e) => handleAddToCart(e, product?._id)}
+                      onClick={(e) => handleAddToCart(e, product?._id)}
                     >
                       Add to Cart
                     </button>
