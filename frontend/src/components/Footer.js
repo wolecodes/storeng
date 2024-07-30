@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto p-4">
         <p
           className="text-center font-bold"
-          title="Final Year Project 2024 in partial fulfilment for Requirement for the Degree of Bachelor of Science in Computer Science"
+          title="Final Year Project 2024 in partial fulfilment of the Requirement for Degree of Bachelor of Science in Computer Science"
         >
           Group four e-commerce plartfrom with an advance database
         </p>
