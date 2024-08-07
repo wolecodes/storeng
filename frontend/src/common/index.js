@@ -49,6 +49,10 @@ const apiSummary = {
     url: `${backendDomain}/api/product-details`,
     method: "post",
   },
+  processPayment: {
+    url: `${backendDomain}/api/make-payment`,
+    method: "post",
+  },
   addToCartProduct: {
     url: `${backendDomain}/api/addtocart`,
     method: "post",
@@ -73,6 +77,10 @@ const apiSummary = {
     url: `${backendDomain}/api/search`,
     method: "get",
   },
+  filterProduct : {
+    url : `${backendDomain}/api/filter-product`,
+    method : 'post'
+}
 };
 
 export default apiSummary;

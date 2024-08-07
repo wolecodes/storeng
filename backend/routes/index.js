@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const axios = require('axios');
 
 const userSignUpController = require("../controller/user/userSignup.js");
 
@@ -24,6 +25,11 @@ const updateAddToCartProduct = require("../controller/user/updateAddToCartProduc
 const deleteAddToCartProduct = require("../controller/user/deleteAddToCartProduct");
 const searchProduct = require("../controller/product/searchProduct.js");
 
+const filterProductController = require('../controller/product/filterProduct');
+
+const paymentController = require("../controller/order/paymentController.js");
+// const initializePayment = require("../controller/order/paymentController.js");
+// const useWebHook = require('../controller/order/webhook.js')
 //User
 router.post("/signup", userSignUpController);
 
@@ -43,6 +49,7 @@ router.get("/get-productCategory", getProductCategory);
 router.post("/category-product", getCategoryWiseProduct);
 router.post("/product-details", getProductDetails);
 router.get("/search", searchProduct);
+router.post("/filter-product",filterProductController);
 
 //Add to cart
 
@@ -51,5 +58,14 @@ router.get("/countAddToCartProduct", authToken, countAddToCartProduct);
 router.get("/view-card-product", authToken, addToCartViewProduct);
 router.post("/update-cart-product", authToken, updateAddToCartProduct);
 router.post("/delete-cart-product", authToken, deleteAddToCartProduct);
+
+
+//payment 
+router.post("/make-payment",paymentController);
+// router.post('/acceptpayment', initializePayment.acceptPayment);
+// router.post('/webhook', useWebHook)
+// router.get('/verifypayment/:reference', initializePayment.verifyPayment);
+// router.post('/charge', initializePayment.chargeCard);
+
 
 module.exports = router;

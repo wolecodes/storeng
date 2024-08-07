@@ -5,6 +5,8 @@ import { FaStar } from "react-icons/fa";
 import { FaStarHalf } from "react-icons/fa";
 import displayCurrency from "../helpers/displayCurrency";
 import CategroyWiseProductDisplay from "../components/CategoryWiseProductDisplay";
+import addToCart from '../helpers/addToCart';
+import Context from '../context';
 const ProductDetails = () => {
   const [data, setData] = useState({
     productName: "",
@@ -27,9 +29,9 @@ const ProductDetails = () => {
   });
   const [zoomImage, setZoomImage] = useState(false);
 
-  // const { fetchUserAddToCart } = useContext(Context);
+  const { fetchUserAddToCart } = useContext(Context);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const fetchProductDetails = async () => {
     setLoading(true);
     const response = await fetch(apiSummary.productDetails.url, {
@@ -72,6 +74,17 @@ const ProductDetails = () => {
   const handleLeaveImageZoom = () => {
     setZoomImage(false);
   };
+  const handleBuyProduct = async(e,id)=>{
+    await addToCart(e,id)
+    fetchUserAddToCart()
+    navigate("/cart")
+
+  }
+  const handleAddToCart = async(e,id) =>{
+    await addToCart(e,id)
+    fetchUserAddToCart()
+ 
+  }
 
   console.log("data", data);
   return (
@@ -194,10 +207,10 @@ const ProductDetails = () => {
               {/* add to button */}
 
               <div className="flex items-center gap-3 my-2">
-                <button className="border-2 border-[#f8991e] text-[#f8991e] rounded px-3 py-1 min-w-[120px] font-medium hover:bg-[#f8991e] hover:text-white ">
+                <button className="border-2 border-[#f8991e] text-[#f8991e] rounded px-3 py-1 min-w-[120px] font-medium hover:bg-[#f8991e] hover:text-white "  onClick={(e)=>handleBuyProduct(e,data?._id)}>
                   Buy
                 </button>
-                <button className="border-2 btn-color border-[#f8991e] px-3 py-1 rounded font-medium hover:bg-white hover:text-[#f8991e]">
+                <button className="border-2 btn-color border-[#f8991e] px-3 py-1 rounded font-medium hover:bg-white hover:text-[#f8991e]" onClick={(e)=>handleAddToCart(e,data?._id)}>
                   Add To Cart
                 </button>
               </div>
