@@ -1,5 +1,6 @@
 const axios = require("axios");
 const https = require('https');
+const cartModel = require('../../models/cartProduct');
 const paymentController = async (req, res) => {
     try {
       const { totalPrice, email } = req.body;
@@ -36,5 +37,7 @@ const paymentController = async (req, res) => {
         })
     }
   };
+
+  
   
   module.exports = paymentController;

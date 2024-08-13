@@ -131,9 +131,8 @@ const Cart = () => {
 
     const popup = new PaystackPop();
 
-    popup.resumeTransaction(responseData.access_code);
+    popup.resumeTransaction(responseData.access_code)
   }
-
   return (
     <div className="container mx-auto">
       <div className="text-center text-lg my-3">

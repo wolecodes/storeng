@@ -28,6 +28,7 @@ const searchProduct = require("../controller/product/searchProduct.js");
 const filterProductController = require('../controller/product/filterProduct');
 
 const paymentController = require("../controller/order/paymentController.js");
+const verifyPaymentController = require("../controller/order/paymentController.js");
 // const initializePayment = require("../controller/order/paymentController.js");
 // const useWebHook = require('../controller/order/webhook.js')
 //User
@@ -62,6 +63,7 @@ router.post("/delete-cart-product", authToken, deleteAddToCartProduct);
 
 //payment 
 router.post("/make-payment",paymentController);
+// Verify payment and delete cart
 // router.post('/acceptpayment', initializePayment.acceptPayment);
 // router.post('/webhook', useWebHook)
 // router.get('/verifypayment/:reference', initializePayment.verifyPayment);

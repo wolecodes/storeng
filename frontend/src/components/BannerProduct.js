@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 //Desktop View
-import image1 from "../assest/banner/img1.webp";
+import image1 from "../assest/banner/img1.png";
 import image2 from "../assest/banner/img2.png";
 import image3 from "../assest/banner/img3.jpg";
 import image4 from "../assest/banner/img4.png";
-import image5 from "../assest/banner/img5.webp";
+import image5 from "../assest/banner/img.png";
 
 //Mobile view
 

@@ -53,6 +53,10 @@ const apiSummary = {
     url: `${backendDomain}/api/make-payment`,
     method: "post",
   },
+  verifyPayment : {
+    url : `${backendDomain}/api/verify-payment`,
+    method : "post"
+  },
   addToCartProduct: {
     url: `${backendDomain}/api/addtocart`,
     method: "post",
