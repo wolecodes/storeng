@@ -39,6 +39,7 @@ const Header = () => {
     if (data.success) {
       toast.success(data.message);
       disPatch(setUserDetails(null));
+      navigate("/");
     }
     if (data.error) {
       toast.error(data.message);

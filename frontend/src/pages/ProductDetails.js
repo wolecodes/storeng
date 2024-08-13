@@ -48,6 +48,7 @@ const ProductDetails = () => {
 
     setData(responseData?.data);
   };
+  
   useEffect(() => {
     fetchProductDetails();
   }, [params]);
