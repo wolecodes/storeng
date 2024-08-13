@@ -1,4 +1,4 @@
-const backendDomain = "https://storeng.onrender.com";
+const backendDomain = "http://localhost:8080";
 
 const apiSummary = {
   signUp: {
