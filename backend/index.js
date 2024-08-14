@@ -8,9 +8,9 @@ const router = require("./routes");
 const app = express();
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: ['http://localhost:3000', 'https://storeng-1.onrender.com'],
     credentials: true,
-    methods: ["GET","POST","PUT","DELETE"]
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
   })
 );
 
