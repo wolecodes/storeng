@@ -8,7 +8,7 @@ const router = require("./routes");
 const app = express();
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://storeng.onrender.com'],
+    origin: 'https://storeng.onrender.com',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   })
