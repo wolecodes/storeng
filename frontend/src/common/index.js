@@ -1,4 +1,4 @@
-const backendDomain = "https://storeng.onrender.com";
+const backendDomain = process.env.REACT_APP_BACKEND_DOMAIN || "https://storeng.onrender.com";
 
 const apiSummary = {
   signUp: {
