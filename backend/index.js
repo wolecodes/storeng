@@ -9,8 +9,8 @@ const app = express();
 app.use(
   cors({
     origin: 'https://storeng.onrender.com',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
   })
 );
 
@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 app.use("/api", router);
 
-const PORT =  process.env.PORT|| 8080;
+const PORT = 8080 || process.env.PORT;
 
 connectDB().then(() => {
   app.listen(PORT, () => {
